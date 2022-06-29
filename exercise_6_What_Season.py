@@ -20,8 +20,9 @@
 # After setting the likely season, you can use another if...elif...else statement to "adjust" if
 # the day number falls within a certain range.
 
-
-
+###################
+## FUNCTIONS
+###################
 def is_valid_day(month,str):
     is_valid = None
     if str.strip().isdigit():
@@ -78,27 +79,43 @@ def calc_season(month, day):
             
     return print(f"{month} {day} is in the {season}.")
 
+##################
+## VARIABLES
+##################
 user_month = None   
-tuple_months = ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" )
+tuple_months = ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 prompt_month = ("\n*SELECT MONTH*\n\nEnter the month of the season using 3 letter abbreviation. \nExample Jan, Feb, Mar: ")
 prompt_day = (f"\n**SELECT DAY** \n\nNOTE: Apr, Jun, Sep, and Nov have 30 days. \nFeb has only 28/29 days. \nEnter the day of the month: ")
 
+######################
+## VALIDATE USER INPUT
+######################
 user_month = input(prompt_month)
-while (not(user_month in tuple_months)):
+user_month = user_month.lower()
+user_month = user_month.capitalize()
+
+while user_month != "quit" and not(user_month in tuple_months):        
     user_month = input(prompt_month)
-
-
-day = (input(prompt_day))    
-
-
-
+    user_month = user_month.lower()
+    user_month = user_month.capitalize() 
+    
+day = (input(prompt_day))   
 
 while not(is_valid_day(user_month,day)):
     day = (input(prompt_day))
 
 day = int(day)
-            
 
+########################
+## RENDER RESULT
+########################
 
-print("\n*****************************************************************************\n")     
+print(f"\n****************************\nRESULT:")     
 calc_season(user_month, day)
+print("****************************")
+
+######################
+## PROMPT CONTINUATION
+######################
+print("\n***ENTER 'quit' TO END***")
+user_month = input(prompt_month)
