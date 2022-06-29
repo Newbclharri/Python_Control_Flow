@@ -1,0 +1,112 @@
+# exercise-06 What's the  Season?
+
+# Write the code that:
+# 1. Prompts the user to enter the month (as three characters):
+#      Enter the month of the season (Jan - Dec):
+# 2. Then propts the user to enter the day of the month: 
+#      Enter the day of the month:
+# 3. Calculate what season it is based upon this chart:
+#      Dec 21 - Mar 19: Winter
+#      Mar 20 - Jun 20: Spring
+#      Jun 21 - Sep 21: Summer
+#      Sep 22 - Dec 20: Fall
+# 4. Print the result as follows:
+#      <Mmm> <dd> is in <season> 
+
+# Hints:
+# Consider using the in operator to check if a string is in a particular list/tuple like this:
+# if input_month in ('Jan', 'Feb', 'Mar'):
+#
+# After setting the likely season, you can use another if...elif...else statement to "adjust" if
+# the day number falls within a certain range.
+
+
+
+def is_valid_day(month,str):
+    if str.strip().isdigit():
+        return True
+    else:
+        return False
+    
+    if str.strip().isdigit():
+        match month:
+            case "April" | "Jun" | "Sep" | "Nov":
+                if str > 30:
+                    return False
+                else:
+                    return True
+            case "Feb":
+                if str > 29:
+                    return False
+                else:
+                    return True
+            case _:
+                if str < 1 or str > 31:
+                    return False
+                else:
+                    return True
+
+def calc_season(month, day):
+    season = None
+    match month:
+        case "Dec" | "Jan" | "Feb"  | "Mar":
+            if month == "Dec":
+                if day >= 19:
+                    season = "Winter"
+                else:
+                    season = "Fall"
+            elif month == "Mar":
+                if day <= 19:
+                    season = "Winter"
+                else:
+                    season = "Spring"
+            else:
+                season = "Winter"
+            
+        case "Apr" | "May"| "Jun":
+            if month == "Jun": 
+                if day <= 20:
+                    season = "Spring"
+                else:
+                    season = "Summer"
+            else:
+                season = "Spring"
+                
+        case "Jul" | "Aug" | "Sep":
+            if month == "Sep":
+                if day <= 21:
+                    season = "Summer"
+                else:
+                    season = "Fall"
+            else:
+                season = "Summer"
+                
+        case "Oct" | "Nov":
+            season = "Fall"
+            
+    return print(f"{month} {day} is in the {season}")
+
+    
+tuple_months = ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" )
+prompt_month = ("\n*SELECT MONTH*\n\nEnter the month of the season using 3 letter abbreviation. \nExample Jan, Feb, Mar: ")
+prompt_day = ("\n**SELECT DAY** \n\nNOTE: Apr, Jun, Sep, and Nov have 30 days. \nFeb has only 28/29 days. \nEnter the day of the month: ")
+
+user_month = input(prompt_month)
+while (not(user_month in tuple_months)):
+    user_month = input(prompt_month)
+
+
+day = (input(prompt_day))    
+
+
+
+
+while not(is_valid_day(user_month,day)):
+    day = (input(prompt_day))
+
+day = int(day)
+            
+
+
+print("\n*****************************************************************************\n")     
+calc_season(user_month, day)
