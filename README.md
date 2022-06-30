@@ -4,7 +4,7 @@
 
 
 # EXERCISE VERSIONS:
-1. ==Py_3.10_exercise_1== 
+1. <mark>Py_3.10_exercise_1</mark> 
 2. ==Py_3.10_exercise_6==
     require python 3.10 to run as it uses *match case*, a feature added in python 3.10
 1. exercise_1 
