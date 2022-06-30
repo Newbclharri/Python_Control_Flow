@@ -1,18 +1,16 @@
-#####################
-## Py 3.8 Compatibile
-#####################
-
 # exercise-01 Vowel or Consonant
 
 # Write the code that:
 # 1. Prompts the user to enter a letter in the alphabet:
 #      Please enter a letter from the alphabet (a-z or A-Z): 
 
+
 letter = input("Please enter a letter from the alphabet (a-z or A-Z): ")
 print(letter)
 
 while letter.isalpha() == False:
-    letter = input("Plaese enter a letter from the alphabet (a-z or A-Z)")
+    letter = input("Please enter a letter from the alphabet (a-z or A-Z): ")
+
 
 # 2. Write the code that determines whether the letter entered is a vowel
 # Could use recursion or elif statements, but I would have to look up some documentation for recursion. 
@@ -25,8 +23,10 @@ while letter.isalpha() == False:
 # Hints:  Use the in operator to check if a character is in another string
 #         For example, if some_char in 'abc':
 def is_vowel(char):
-    if char in ("A", "a", "E", "e", "I", "i", "O", "o", "U", "u"):
-        print(f"{char} is a vowel.")
-    else:
-        print(f"{char} is a consonant.")
+
+    match char:
+        case "A" | "a" | "E" | "e" | "I" | "i" | "O" | "o" | "U" | "u":
+            return print(f"{char} is a vowel.")
+        case _:
+            return print(f"{char} is a consonant.")
 is_vowel(letter)
