@@ -50,13 +50,14 @@ def is_valid_day(month,str):
                     is_valid = True
     return is_valid
 
+# I could have used "if in" instead match case.  I just wanted to test out match case in python
 def calc_season(month, day):
     season = None
     match month:
         case "Dec" | "Jan" | "Feb"  | "Mar":
             season = "Winter"
             if month == "Dec":
-                if day < 19:
+                if day < 21:
                     season = "Fall"
             elif month == "Mar":
                 if day > 19:
