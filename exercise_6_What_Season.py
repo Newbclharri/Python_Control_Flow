@@ -90,9 +90,6 @@ prompt_day = (f"\n**SELECT DAY** \n\nNOTE: Apr, Jun, Sep, and Nov have 30 days. 
 ######################
 ## VALIDATE USER INPUT
 ######################
-user_month = input(prompt_month)
-user_month = user_month.lower()
-user_month = user_month.capitalize()
 
 while user_month != "quit" and not(user_month in tuple_months):        
     user_month = input(prompt_month)
@@ -119,3 +116,5 @@ print("****************************")
 ######################
 print("\n***ENTER 'quit' TO END***")
 user_month = input(prompt_month)
+user_month = user_month.lower()
+user_month = user_month.capitalize()
