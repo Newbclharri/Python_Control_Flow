@@ -50,7 +50,7 @@ def is_valid_day(month,str):
                     is_valid = True
     return is_valid
 
-# I could have used "if in" instead match case.  I just wanted to test out match case in python
+# I could have used "if in" instead of match case.  I just wanted to test out match case in python
 def calc_season(month, day):
     season = None
     match month:
