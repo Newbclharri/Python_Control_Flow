@@ -31,20 +31,20 @@ def is_valid_day(month,str):
         is_valid = False
     
     if str.strip().isdigit():
-        str = int(str)
+        num = int(str)
         match month:
-            case "April" | "Jun" | "Sep" | "Nov":
-                if str > 30:
+            case "Apr" | "Jun" | "Sep" | "Nov":
+                if num > 30:
                     is_valid = False
                 else:
                     is_valid = True
             case "Feb":
-                if str > 29:
+                if num > 29:
                     is_valid = False
                 else:
                     is_valid = True
             case _:
-                if str < 1 or str > 31:
+                if num < 1 or num > 31:
                     is_valid = False
                 else:
                     is_valid = True
@@ -91,31 +91,34 @@ prompt_day = (f"\n**SELECT DAY** \n\nNOTE: Apr, Jun, Sep, and Nov have 30 days. 
 ######################
 ## VALIDATE USER INPUT
 ######################
-
-while user_month != "quit" and not(user_month in tuple_months):        
-    user_month = input(prompt_month)
-    user_month = user_month.lower()
-    user_month = user_month.capitalize() 
-    
-day = (input(prompt_day))   
-
-while not(is_valid_day(user_month,day)):
-    day = (input(prompt_day))
-
-day = int(day)
-
-########################
-## RENDER RESULT
-########################
-
-print(f"\n****************************\nRESULT:")     
-calc_season(user_month, day)
-print("****************************")
-
-######################
-## PROMPT CONTINUATION
-######################
-print("\n***ENTER 'quit' TO END***")
 user_month = input(prompt_month)
 user_month = user_month.lower()
-user_month = user_month.capitalize()
+user_month = user_month.capitalize() 
+
+while user_month != "quit":
+    while not(user_month in tuple_months):        
+        user_month = input(prompt_month)
+        user_month = user_month.lower()
+        user_month = user_month.capitalize() 
+    
+    day = (input(prompt_day))   
+
+    while not(is_valid_day(user_month,day)):
+        day = (input(prompt_day))
+
+    day = int(day)
+
+    ########################
+    ## RENDER RESULT
+    ########################
+    print(f"\n****************************\nRESULT:")     
+    calc_season(user_month, day)
+    print("****************************")
+
+    ######################
+    ## PROMPT CONTINUATION
+    ######################
+    print("\n***ENTER 'quit' TO END***")
+    user_month = input(prompt_month)
+    # user_month = user_month.lower()
+    # user_month = user_month.capitalize()
