@@ -52,7 +52,7 @@ def calc_season(month, day):
     
     if month in ("Oct", "Nov", "Dec"):
         season = "Fall"
-        if month == "Dec" and day < 21:
+        if month == "Dec" and day > 21:
             season = "Winter"
                         
     print(f"{month} {day} is in the {season}.")
